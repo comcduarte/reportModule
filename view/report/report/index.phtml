@@ -1,0 +1,25 @@
+<div class="container">
+	<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Report Name</th>
+			<th>View File</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php foreach ($this->data as $report) : ?>
+		<tr>
+			<td>
+				<?php $url = $this->url('reports/default',['action' => 'view','uuid' => $report['UUID']]); ?>
+				<a href="<?php echo $url; ?>" target="_blank"><?php echo $report['NAME']; ?></a>
+			</td>
+			<td><?php echo $report['VIEW']; ?></td>
+			<td>
+				<a href="<?php echo $this->url('reports/default', ['action' => 'update', 'uuid' => $report['UUID']]); ?>"><i class="fas fa-edit"></i></a>
+			</td>
+		</tr>
+		<?php endforeach; ?>
+	</tbody>
+	</table>
+</div>
