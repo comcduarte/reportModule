@@ -4,7 +4,7 @@ namespace Report\Controller;
 use Mapindex\Controller\AbstractBaseController;
 use Report\Model\ReportModel;
 use Zend\Db\ResultSet\ResultSet;
-use RuntimeException;
+use Exception;
 
 class ReportController extends AbstractBaseController
 {
@@ -40,7 +40,7 @@ class ReportController extends AbstractBaseController
             $resultSet = new ResultSet();
             $data = $statement->execute();
             $resultSet->initialize($data);
-        } catch (RuntimeException $e) {
+        } catch (Exception $e) {
             return $e;
         }
         
