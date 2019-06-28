@@ -1,10 +1,14 @@
 <?php 
 
+use Report\Controller\ConfigController;
 use Report\Controller\ReportController;
+use Report\Controller\Factory\ConfigControllerFactory;
 use Report\Controller\Factory\ReportControllerFactory;
 use Report\Form\ReportForm;
 use Report\Form\Factory\ReportFormFactory;
 use Report\Service\Factory\ReportModelPrimaryAdapterFactory;
+use Zend\Router\Http\Literal;
+use Zend\Router\Http\Segment;
 
 return [
     'router' => [
@@ -21,6 +25,16 @@ return [
                 ],
                 'may_terminate' => TRUE,
                 'child_routes' => [
+                    'config' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route' => '/config[/:action]',
+                            'defaults' => [
+                                'action' => 'index',
+                                'controller' => ConfigController::class,
+                            ],
+                        ],
+                    ],
                     'default' => [
                         'type' => Segment::class,
                         'priority' => -100,
@@ -38,6 +52,7 @@ return [
     ],
     'controllers' => [
         'factories' => [
+            ConfigController::class => ConfigControllerFactory::class,
             ReportController::class => ReportControllerFactory::class,
         ],
     ],
@@ -61,6 +76,10 @@ return [
                         'label' => 'Add New Report',
                         'route' => 'reports/default',
                         'action' => 'create',
+                    ],
+                    [
+                        'label' => 'Settings',
+                        'route' => 'reports/config',
                     ],
                 ],
             ],
