@@ -1,7 +1,7 @@
 <?php 
 namespace Report\Controller;
 
-use Mapindex\Controller\AbstractBaseController;
+use Midnet\Controller\AbstractBaseController;
 use Report\Model\ReportModel;
 use Zend\Db\ResultSet\ResultSet;
 use RuntimeException;
@@ -28,7 +28,7 @@ class ReportController extends AbstractBaseController
         
         $uuid = $this->params()->fromRoute('uuid',0);
         if (!$uuid) {
-            return $this->redirect()->toRoute('dog/report');
+            throw new \Exception('Missing UUID');
         }
         
         $report = new ReportModel($this->adapter);
