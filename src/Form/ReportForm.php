@@ -1,7 +1,7 @@
 <?php 
 namespace Report\Form;
 
-use Mapindex\Form\AbstractBaseForm;
+use Midnet\Form\AbstractBaseForm;
 use Zend\Form\Element\Text;
 use Zend\Form\Element\Textarea;
 
