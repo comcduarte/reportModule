@@ -48,10 +48,4 @@ class ConfigController extends AbstractConfigController
         
         $this->adapter->query($sql->buildSqlString($ddl), $this->adapter::QUERY_MODE_EXECUTE);
     }
-    
-    public function setRoute()
-    {
-        $this->route = 'reports/config';
-    }
-
 }

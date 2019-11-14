@@ -11,7 +11,6 @@ class ConfigControllerFactory implements FactoryInterface
     {
         $controller = new ConfigController();
         $controller->setDbAdapter($container->get('report-model-primary-adapter'));
-        $controller->initialize();
         return $controller;
     }
 }
