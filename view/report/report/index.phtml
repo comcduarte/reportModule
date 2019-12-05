@@ -8,15 +8,23 @@
 		</tr>
 	</thead>
 	<tbody>
-		<?php foreach ($this->data as $report) : ?>
+		<?php foreach ($this->data as $record) : ?>
 		<tr>
 			<td>
-				<?php $url = $this->url('reports/default',['action' => 'view','uuid' => $report['UUID']]); ?>
-				<a href="<?php echo $url; ?>" target="_blank"><?php echo $report['NAME']; ?></a>
+				<?php $url = $this->url('reports/default',['action' => 'view','uuid' => $record['UUID']]); ?>
+				<a href="<?php echo $url; ?>" target="_blank"><?php echo $record['NAME']; ?></a>
 			</td>
-			<td><?php echo $report['VIEW']; ?></td>
+			<td><?php echo $record['VIEW']; ?></td>
 			<td>
-				<a href="<?php echo $this->url('reports/default', ['action' => 'update', 'uuid' => $report['UUID']]); ?>"><i class="fas fa-edit"></i></a>
+				<div class="dropdown">
+                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    	<i class="fas fa-bars"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    	<a class="dropdown-item" href="<?=$this->url('reports/default', ['action' => 'update', strtolower($this->primary_key) => $record[$this->primary_key]])?>">Update</a>
+                    	<a class="dropdown-item bg-danger text-white" href="<?=$this->url('reports/default', ['action' => 'delete', strtolower($this->primary_key) => $record[$this->primary_key]])?>">Delete</a>
+                    </div>
+                </div>
 			</td>
 		</tr>
 		<?php endforeach; ?>
