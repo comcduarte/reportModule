@@ -50,6 +50,15 @@ return [
             ],
         ],
     ],
+    'acl' => [
+        'guest' => [
+        ],
+        'member' => [
+            'reports' => ['index','create','update','delete', 'view'],
+            'reports/config' => ['index', 'create','clear'],
+            'reports/default' => ['index','create','update','delete','view'],
+        ],
+    ],
     'controllers' => [
         'factories' => [
             ConfigController::class => ConfigControllerFactory::class,
